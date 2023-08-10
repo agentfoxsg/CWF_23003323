@@ -110,4 +110,8 @@ public class Song {
 	              (s2.getSongLength() == s1.getSongLength() ? 0 : 1));           
 	    }     
 	};
-}
+
+	public int getLengthInSeconds() {
+		// TODO Auto-generated method stub
+		return 0;
+	}}

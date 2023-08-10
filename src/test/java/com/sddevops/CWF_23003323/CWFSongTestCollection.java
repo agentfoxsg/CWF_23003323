@@ -2,6 +2,7 @@ package com.sddevops.CWF_23003323;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -35,9 +36,9 @@ class CWFSongTestCollection {
 
 	@Test
 	void testGetSongs() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
-
+	
 	@Test
 	void testAddSong() {
 		//fail("Not yet implemented");
@@ -52,22 +53,63 @@ class CWFSongTestCollection {
 
 	@Test
 	void testSortSongsByTitle() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		// Arrange: Create an instance of the SongCollection and add some songs to it
+        SongCollection songCollection = new SongCollection(10);
+        // ... add songs to the collection
+        // Act: Call the method you want to test
+        ArrayList<Song> sortedSongs = songCollection.sortSongsByTitle();
+        // Assert: Verify that the songs are sorted by title
+        for (int i = 1; i < sortedSongs.size(); i++) {
+            String previousTitle = sortedSongs.get(i - 1).getTitle();
+            String currentTitle = sortedSongs.get(i).getTitle();
+            assertTrue(previousTitle.compareTo(currentTitle) <= 0, "Songs are not sorted correctly");}
 	}
 
 	@Test
 	void testSortSongsBySongLength() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		// Arrange: Create an instance of the SongCollection and add some songs to it
+        SongCollection songCollection = new SongCollection(10);
+        // ... add songs to the collection
+        // Act: Call the method you want to test
+        ArrayList<Song> sortedSongs = songCollection.sortSongsBySongLength();
+        // Assert: Verify that the songs are sorted by song length
+        for (int i = 1; i < sortedSongs.size(); i++) {
+            int previousLength = sortedSongs.get(i - 1).getLengthInSeconds();
+            int currentLength = sortedSongs.get(i).getLengthInSeconds();
+            assertTrue(previousLength <= currentLength, "Songs are not sorted correctly");}
 	}
 
 	@Test
 	void testFindSongsById() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		// Arrange: Create an instance of the SongCollection and add some songs to it
+        SongCollection songCollection = new SongCollection(10);
+        // ... add songs to the collection
+        // Act: Call the method you want to test
+        String targetId = "your_target_id"; // Replace with the actual target ID you want to search for
+        Song foundSong = songCollection.findSongsById(targetId);
+        // Assert: Verify that the correct song was found (or not found)
+        if (foundSong != null) {
+            assertEquals(targetId, foundSong.getId(), "Found song has incorrect ID");
+        } else {
+            assertNull(foundSong, "Song with the target ID was not found");}
 	}
 
 	@Test
 	void testFindSongByTitle() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		// Arrange: Create an instance of the SongCollection and add some songs to it
+        SongCollection songCollection = new SongCollection(10);
+        // ... add songs to the collection
+        // Act: Call the method you want to test
+        ArrayList<Song> sortedSongs = songCollection.sortSongsByTitle();
+        // Assert: Verify that the songs are sorted by title
+        for (int i = 1; i < sortedSongs.size(); i++) {
+            String previousTitle = sortedSongs.get(i - 1).getTitle();
+            String currentTitle = sortedSongs.get(i).getTitle();
+            assertTrue(previousTitle.compareTo(currentTitle) <= 0, "Songs are not sorted correctly by title");}
 	}
 
 }
