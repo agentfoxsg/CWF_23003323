@@ -14,7 +14,7 @@ class CWFSongTestCollection {
 	private Song s2;
 	private Song s3;
 	private Song s4;
-	private final int SONG_COLLECTION_SIZE=4;
+	private final int SONG_COLLECTION_SIZE=4; 
 
 	@BeforeEach
 	void setUp() throws Exception {
