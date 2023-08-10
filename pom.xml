@@ -25,13 +25,24 @@
 	<junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
 	<junit-jupiter.version>5.7.0</junit-jupiter.version>
 	<jacoco.groupId>org.jacoco</jacoco.groupId>
-<jacoco.artifactId>jacoco-maven-plugin</jacoco.artifactId>
-<jacoco.version>0.8.7</jacoco.version>
-<!-- SonarQube properties -->
-<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-<sonar.language>java</sonar.language>
-  </properties>
+	<jacoco.artifactId>jacoco-maven-plugin</jacoco.artifactId>
+	<jacoco.version>0.8.7</jacoco.version>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	
+	<!-- jacoco properties -->
+	<jacoco.groupId>org.jacoco</jacoco.groupId>
+	<jacoco.artifactId>jacoco-maven-plugin</jacoco.artifactId>
+	<jacoco.version>0.8.7</jacoco.version>
+	
+	<!-- SonarQube properties -->
+	<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+	<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+	<sonar.language>java</sonar.language>
+	<junit-jupiter.groupId>org.junit.jupiter</junit-jupiter.groupId>
+	<junit-jupiter.artifactId>junit-jupiter</junit-jupiter.artifactId>
+	<junit-jupiter.version>5.7.0</junit-jupiter.version>
+	  </properties>
 
     <dependencies>
   <dependency>
@@ -57,6 +68,22 @@
 	<version>${junit-jupiter.version}</version>
 	<scope>test</scope>
 	</dependency>
+	<dependency>
+	<groupId>${junit-jupiter.groupId}</groupId>
+	<artifactId>${junit-jupiter.artifactId}</artifactId>
+	<version>${junit-jupiter.version}</version>
+	<scope>test</scope>
+	</dependency>
+	<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>2.19.0</version> 
+</dependency> 
+<dependency> 
+    <groupId>org.apache.logging.log4j</groupId> 
+    <artifactId>log4j-core</artifactId> 
+    <version>2.19.0</version> 
+</dependency>
   	</dependencies>
 
   <build>
@@ -129,6 +156,26 @@
 	</execution>
 	</executions>
 	</plugin>
+	<plugin>
+<groupId>${jacoco.groupId}</groupId>
+<artifactId>${jacoco.artifactId}</artifactId>
+<version>${jacoco.version}</version>
+<executions>
+<execution>
+<id>prepare-agent</id>
+<goals>
+<goal>prepare-agent</goal>
+</goals>
+</execution>
+<execution>
+<id>report</id>
+<phase>verify</phase>
+<goals>
+<goal>report</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
       </plugins>
   </build>
 </project>
