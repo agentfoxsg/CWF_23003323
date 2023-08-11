@@ -37,6 +37,12 @@ class CWFSongTestCollection {
 	@Test
 	void testGetSongs() {
 		//fail("Not yet implemented");
+		   List<Song> songs = sc.getSongs();
+	        assertEquals(SONG_COLLECTION_SIZE, songs.size());
+	        assertTrue(songs.contains(s1));
+	        assertTrue(songs.contains(s2));
+	        assertTrue(songs.contains(s3));
+	        assertTrue(songs.contains(s4));
 	}
 	
 	@Test
@@ -54,62 +60,37 @@ class CWFSongTestCollection {
 	@Test
 	void testSortSongsByTitle() {
 		//fail("Not yet implemented");
-		// Arrange: Create an instance of the SongCollection and add some songs to it
-        SongCollection songCollection = new SongCollection(10);
-        // ... add songs to the collection
-        // Act: Call the method you want to test
-        ArrayList<Song> sortedSongs = songCollection.sortSongsByTitle();
-        // Assert: Verify that the songs are sorted by title
-        for (int i = 1; i < sortedSongs.size(); i++) {
-            String previousTitle = sortedSongs.get(i - 1).getTitle();
-            String currentTitle = sortedSongs.get(i).getTitle();
-            assertTrue(previousTitle.compareTo(currentTitle) <= 0, "Songs are not sorted correctly");}
+		 ArrayList<Song> sortedSongs = sc.sortSongsByTitle();
+	        for (int i = 1; i < sortedSongs.size(); i++) {
+	            String previousTitle = sortedSongs.get(i - 1).getTitle();
+	            String currentTitle = sortedSongs.get(i).getTitle();
+	            assertTrue(previousTitle.compareTo(currentTitle) <= 0, "Songs are not sorted correctly by title");
+	        }
 	}
 
 	@Test
 	void testSortSongsBySongLength() {
 		//fail("Not yet implemented");
-		// Arrange: Create an instance of the SongCollection and add some songs to it
-        SongCollection songCollection = new SongCollection(10);
-        // ... add songs to the collection
-        // Act: Call the method you want to test
-        ArrayList<Song> sortedSongs = songCollection.sortSongsBySongLength();
-        // Assert: Verify that the songs are sorted by song length
-        for (int i = 1; i < sortedSongs.size(); i++) {
-            int previousLength = sortedSongs.get(i - 1).getLengthInSeconds();
-            int currentLength = sortedSongs.get(i).getLengthInSeconds();
-            assertTrue(previousLength <= currentLength, "Songs are not sorted correctly");}
-	}
+		  ArrayList<Song> sortedSongs = sc.sortSongsBySongLength();
+	        for (int i = 1; i < sortedSongs.size(); i++) {
+	            double previousLength = sortedSongs.get(i - 1).getSongLength();
+	            double currentLength = sortedSongs.get(i).getSongLength();
+	            assertTrue(previousLength <= currentLength, "Songs are not sorted correctly by song length");}
+	        }
 
 	@Test
 	void testFindSongsById() {
 		//fail("Not yet implemented");
-		// Arrange: Create an instance of the SongCollection and add some songs to it
-        SongCollection songCollection = new SongCollection(10);
-        // ... add songs to the collection
-        // Act: Call the method you want to test
-        String targetId = "your_target_id"; // Replace with the actual target ID you want to search for
-        Song foundSong = songCollection.findSongsById(targetId);
-        // Assert: Verify that the correct song was found (or not found)
-        if (foundSong != null) {
-            assertEquals(targetId, foundSong.getId(), "Found song has incorrect ID");
-        } else {
-            assertNull(foundSong, "Song with the target ID was not found");}
-	}
+	      Song foundSong = sc.findSongsById("003");
+	        assertNotNull(foundSong);
+	        assertEquals("MONTERO", foundSong.getTitle());
+	    }
 
 	@Test
 	void testFindSongByTitle() {
 		//fail("Not yet implemented");
-		// Arrange: Create an instance of the SongCollection and add some songs to it
-        SongCollection songCollection = new SongCollection(10);
-        // ... add songs to the collection
-        // Act: Call the method you want to test
-        ArrayList<Song> sortedSongs = songCollection.sortSongsByTitle();
-        // Assert: Verify that the songs are sorted by title
-        for (int i = 1; i < sortedSongs.size(); i++) {
-            String previousTitle = sortedSongs.get(i - 1).getTitle();
-            String currentTitle = sortedSongs.get(i).getTitle();
-            assertTrue(previousTitle.compareTo(currentTitle) <= 0, "Songs are not sorted correctly by title");}
+	      Song foundSong = sc.findSongByTitle("Peaches");
+	        assertNotNull(foundSong);
+	        assertEquals("Justin Bieber", foundSong.getArtiste());
+	    }
 	}
-
-}
