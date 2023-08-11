@@ -1,15 +1,13 @@
 package com.sddevops.CWF_23003323;
 
-import static org.junit.Assert.*;
-import static org.testng.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-
+import org.junit.jupiter.api.Test;
 
 public class SongCollectionTest {
 	private SongCollection sc;
@@ -20,7 +18,7 @@ public class SongCollectionTest {
 	private final int SONG_COLLECTION_SIZE=4; 
 
 	@BeforeEach
-	void setUp() throws Exception {
+	 void setUp() throws Exception {
 		sc=new SongCollection();
 		s1 = new Song("001","good 4 u","Olivia Rodrigo",3.59);
 		s2 = new Song("002","Peaches","Justin Bieber",3.18);
@@ -78,6 +76,11 @@ public class SongCollectionTest {
 //	            double previousLength = sortedSongs.get(i - 1).getSongLength();
 //	            double currentLength = sortedSongs.get(i).getSongLength();
 //	            assertTrue(previousLength <= currentLength, "Songs are not sorted correctly by song length");}
+	
+	
+	// try to create 3 songs of different length
+	// sort the song by length
+	//assert that the order of the songs are base on shortest to longest or longest to shortest
 //	        }
 
 	@Test

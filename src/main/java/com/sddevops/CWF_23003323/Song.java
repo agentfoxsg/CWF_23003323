@@ -81,6 +81,8 @@ public class Song {
 
 	@Override
 	public int hashCode() {
+		//Narima,SDDEVOPS,RP- > 1234125123
+		//Narima,SDDEVOPS,TP -> 1235764944
 		return Objects.hash(artiste, id, songLength, title);
 	}
 
@@ -107,7 +109,8 @@ public class Song {
 		@Override         
 	    public int compare(Song s1, Song s2) {             
 	      return (s2.getSongLength() < s1.getSongLength() ? -1 :                     
-	              (s2.getSongLength() == s1.getSongLength() ? 0 : 1));           
+	              (s2.getSongLength() == s1.getSongLength() ? 0 : 1));   
+
 	    }     
 	};
 
