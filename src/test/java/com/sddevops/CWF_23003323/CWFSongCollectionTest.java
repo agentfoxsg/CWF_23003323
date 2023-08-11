@@ -3,6 +3,7 @@ package com.sddevops.CWF_23003323;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -83,17 +84,33 @@ public class CWFSongCollectionTest {
 	@Test
 	public void testFindSongsById() {
 		// fail("Not yet implemented");
-		Song foundSong = sc.findSongsById("003");
-		assertNotNull(foundSong);
-		assertEquals("MONTERO", foundSong.getTitle());
+		  SongCollection collection = new SongCollection();
+	        Song song1 = new Song("0001", "good 4 u", "Olivia Rodrigo", 3.59);
+	        Song song2 = new Song("0002", "Peaches", "Justin Bieber", 3.18);
+
+	        // Add songs to the collection (you'll need to implement this)
+	        collection.addSong(song1);
+	        collection.addSong(song2);
+
+	        assertEquals(song1, collection.findSongsById("0001"));
+	        assertEquals(song2, collection.findSongsById("0002"));
+	        assertNull(collection.findSongsById("0003"));
 	}
 
 	@Test
 	public void testFindSongByTitle() {
 		// fail("Not yet implemented");
-		Song foundSong = sc.findSongByTitle("Peaches");
-		assertNotNull(foundSong);
-		assertEquals("Justin Bieber", foundSong.getArtiste());
+		SongCollection collection = new SongCollection();
+        Song song1 = new Song("0001", "good 4 u", "Olivia Rodrigo", 3.59);
+        Song song2 = new Song("0002", "Peaches", "Justin Bieber", 3.18);
+
+        // Add songs to the collection (you'll need to implement this)
+        collection.addSong(song1);
+        collection.addSong(song2);
+
+        assertEquals(song1, collection.findSongByTitle("good 4 u"));
+        assertEquals(song2, collection.findSongByTitle("Peaches"));
+        assertNull(collection.findSongByTitle("MONTERO"));
 	}
 
 	@Test
@@ -125,5 +142,40 @@ public class CWFSongCollectionTest {
 	    assertEquals(song1, song2);
 	    assertNotEquals(song1, song3);
 	}
+	 @Test
+	    void testTitleComparator() {
+	        List<Song> songs = new ArrayList<>();
+	        songs.add(s1);
+	        songs.add(s2);
+	        songs.add(s3);
+	        songs.add(s4);
+
+	        Collections.sort(songs, Song.titleComparator);
+
+	        assertEquals("MONTERO", songs.get(0).getTitle());
+	        assertEquals("Peaches", songs.get(1).getTitle());
+	        assertEquals("bad guy", songs.get(2).getTitle());
+	        assertEquals("good 4 u", songs.get(3).getTitle());
+	    }
+	 
+	  @Test
+	    void testSongCollectionCapacity() {
+	        assertEquals(9, sc.getCapacity());
+	        
+	        sc.addSong(s1);
+	        sc.addSong(s2);
+	        sc.addSong(s3);
+	        sc.addSong(s4);
+
+	        // Trying to add one more song should not exceed the capacity
+	        Song extraSong = new Song("005", "New Song", "Artist", 2.5);
+	        sc.addSong(extraSong);
+
+	        assertEquals(9, sc.getSongs().size()); // Ensure the size doesn't exceed capacity
+	        assertTrue(sc.getSongs().contains(extraSong)); // Ensure the extra song is added
+	    }
+	  
+	 
 }
+
 

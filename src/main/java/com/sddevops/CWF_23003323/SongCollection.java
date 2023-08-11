@@ -13,7 +13,7 @@ public class SongCollection {
     	songs.add(new Song("0003","MONTERO","Lil Nas X",2.3));
     	songs.add(new Song("0004","bad guy","Billie Eilish",3.14));*/
 
-        this.capacity = 20;
+        this.capacity = 9;
     }
 
     public SongCollection(int capacity) {
@@ -53,4 +53,9 @@ public class SongCollection {
        }
     	return null;
     }
+
+	public Integer getCapacity() {
+		// TODO Auto-generated method stub
+		return capacity;
+	}
 }
