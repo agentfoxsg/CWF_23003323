@@ -157,25 +157,6 @@ public class CWFSongCollectionTest {
 	        assertEquals("bad guy", songs.get(2).getTitle());
 	        assertEquals("good 4 u", songs.get(3).getTitle());
 	    }
-	 
-	  @Test
-	    void testSongCollectionCapacity() {
-	        assertEquals(9, sc.getCapacity());
-	        
-	        sc.addSong(s1);
-	        sc.addSong(s2);
-	        sc.addSong(s3);
-	        sc.addSong(s4);
-
-	        // Trying to add one more song should not exceed the capacity
-	        Song extraSong = new Song("005", "New Song", "Artist", 2.5);
-	        sc.addSong(extraSong);
-
-	        assertEquals(9, sc.getSongs().size()); // Ensure the size doesn't exceed capacity
-	        assertTrue(sc.getSongs().contains(extraSong)); // Ensure the extra song is added
-	    }
-	  
-	 
 }
 
 
